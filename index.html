@@ -38,13 +38,17 @@
             const contentElement = document.createElement('p');
             contentElement.textContent = post.content;
 
-            // Check if the media is an image or video
-            const mediaElement = document.createElement(post.media.startsWith('data:image/') ? 'img' : 'video');
-            mediaElement.src = post.media;
-            
-            // Add controls only if it's a video
-            if (mediaElement.tagName === 'VIDEO') {
+            // Determine if media is an image or video based on file extension
+            let mediaElement;
+            if (post.media.endsWith('.mp4') || post.media.endsWith('.webm') || post.media.endsWith('.ogg')) {
+                // It's a video
+                mediaElement = document.createElement('video');
+                mediaElement.src = post.media;
                 mediaElement.controls = true;
+            } else {
+                // Default to image if not a video
+                mediaElement = document.createElement('img');
+                mediaElement.src = post.media;
             }
 
             postDiv.appendChild(titleElement);
