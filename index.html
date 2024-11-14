@@ -38,13 +38,20 @@
             const contentElement = document.createElement('p');
             contentElement.textContent = post.content;
 
-            const mediaElement = document.createElement(post.media.startsWith('data:image/') ? ' img' : 'video');
-            mediaElement.src = post.media;
-            mediaElement.controls = true;
+            let mediaElement;
+            if (post.media.startsWith('data:image/')) {
+                mediaElement = document.createElement('img');
+                mediaElement.src = post.media;
+            } else if (post.media.startsWith('data:video/')) {
+                mediaElement = document.createElement('video');
+                mediaElement.src = post.media;
+            }
 
             postDiv.appendChild(titleElement);
             postDiv.appendChild(contentElement);
-            postDiv.appendChild(mediaElement);
+            if (mediaElement) {
+                postDiv.appendChild(mediaElement);
+            }
             postsContainer.appendChild(postDiv);
         });
     </script>
