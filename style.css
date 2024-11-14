@@ -1,0 +1,51 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+}
+
+#admin, #login {
+    margin: 20px 0;
+}
+
+#uploadForm, #loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#uploadForm input, 
+#uploadForm textarea, 
+#loginForm input {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+#postDisplay {
+    margin-top: 20px;
+}
