@@ -10,8 +10,7 @@ app.use(express.static('public'));
 
 let posts = []; // Array to hold blog posts
 
-app.post('/api/posts', (req, res) ```javascript
-) => {
+app.post('/api/posts', (req, res) => {
     const { title, content } = req.body;
     posts.push({ title, content });
     res.json({ status: 'success', message: 'Post published!' });
