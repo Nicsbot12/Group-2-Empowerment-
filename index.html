@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>My Blogging Website</title>
+    <title>Homepage</title>
 </head>
 <body>
     <header>
@@ -17,12 +17,36 @@
         </nav>
     </header>
     <main>
-        <h2>Blog Posts</h2>
-        <div id="posts"></div>
+        <h2>Posts</h2>
+        <div id="postsContainer"></div>
     </main>
     <footer>
         <p>&copy; 2023 My Blogging Website</p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        // Load posts from local storage and display them
+        const postsContainer = document.getElementById('postsContainer');
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+        posts.forEach(post => {
+            const postDiv = document.createElement('div');
+            postDiv.classList.add('post');
+
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = post.title;
+
+            const contentElement = document.createElement('p');
+            contentElement.textContent = post.content;
+
+            const mediaElement = document.createElement(post.media.startsWith('data:image/') ? ' img' : 'video');
+            mediaElement.src = post.media;
+            mediaElement.controls = true;
+
+            postDiv.appendChild(titleElement);
+            postDiv.appendChild(contentElement);
+            postDiv.appendChild(mediaElement);
+            postsContainer.appendChild(postDiv);
+        });
+    </script>
 </body>
 </html>
