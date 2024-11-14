@@ -50,15 +50,21 @@
     </footer>
 
     <script>
-        // JavaScript to pause/play videos based on scroll position
+        // JavaScript to pause/play videos based on scroll position and resume from last position
         const videos = document.querySelectorAll("video");
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+                const video = entry.target;
+
                 if (entry.isIntersecting) {
-                    entry.target.play();
+                    // Resume playing the video if not already playing
+                    if (video.paused) {
+                        video.play();
+                    }
                 } else {
-                    entry.target.pause();
+                    // Pause the video if it's out of view
+                    video.pause();
                 }
             });
         }, { threshold: 0.5 });
@@ -66,5 +72,5 @@
         videos.forEach(video => observer.observe(video));
     </script>
 </body>
-</html>
+                </html>
     
