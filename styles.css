@@ -6,13 +6,27 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #5c4d8b, #9b6baf);
     color: #333;
     line-height: 1.6;
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 header {
-    background: #333;
+    background: rgba(51, 51, 51, 0.8);
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -39,7 +53,7 @@ main {
     padding: 20px;
     max-width: 400px; /* Adjusted for a more compact login form */
     margin: auto;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.5s ease forwards;
@@ -106,7 +120,7 @@ img, video {
 footer {
     text-align: center;
     padding: 20px 0;
-    background: #333;
+    background: rgba(51, 51, 51, 0.8);
     color: #fff;
     position: relative;
     bottom: 0;
@@ -141,4 +155,4 @@ footer {
         transform: translateY(0);
         opacity: 1;
     }
-        }
+    }
