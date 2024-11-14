@@ -1,20 +1,30 @@
 document.getElementById('postForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the form from submitting normally
 
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
     const media = document.getElementById('media').files[0];
 
-    const postContainer = document.getElementById('posts');
-    const postElement = document.createElement('article');
+    // Create a FileReader to read the uploaded file
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const post = {
+            title: title,
+            content: content,
+            media: e.target.result // This will be the base64 encoded string of the file
+        };
 
-    const mediaElement = document.createElement(media.type.startsWith('image/') ? 'img' : 'video');
-    mediaElement.src = URL.createObjectURL(media);
-    mediaElement.controls = media.type.startsWith('video/');
+        // Get existing posts from local storage or initialize an empty array
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.push(post); // Add the new post to the array
 
-    postElement.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
-    postElement.appendChild(mediaElement);
-    postContainer.prepend(postElement);
+        // Save the updated posts array back to local storage
+        localStorage.setItem('posts', JSON.stringify(posts));
 
-    document.getElementById('postForm').reset();
+        // Redirect to the homepage
+        window.location.href = 'index.html';
+    };
+
+    // Read the uploaded file as a data URL (base64)
+    reader.readAsDataURL(media);
 });
