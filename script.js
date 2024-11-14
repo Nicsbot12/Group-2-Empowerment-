@@ -2,26 +2,40 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
     const content = document.getElementById('content').value;
-    const media = document.getElementById('media').files[0];
+    const mediaFiles = document.getElementById('media').files; // Get all selected files
 
     const reader = new FileReader();
-    reader.onload = function(e) {
-        const post = {
-            content: content,
-            media: e.target.result // Base64 encoded string
+    let mediaArray = [];
+    let filesProcessed = 0;
+
+    // Loop through all selected files
+    for (let i = 0; i < mediaFiles.length; i++) {
+        const file = mediaFiles[i];
+        reader.onload = function(e) {
+            mediaArray.push(e.target.result); // Add the base64 string of the file
+
+            filesProcessed++;
+
+            // Once all files are processed, store the post
+            if (filesProcessed === mediaFiles.length) {
+                const post = {
+                    content: content,
+                    media: mediaArray // Array of base64 encoded media
+                };
+
+                // Store posts in local storage
+                const posts = JSON.parse(localStorage.getItem('posts')) || [];
+                posts.push(post);
+                localStorage.setItem('posts', JSON.stringify(posts));
+
+                // Clear form and refresh display
+                document.getElementById('postForm').reset();
+                displayPosts();
+            }
         };
 
-        // Store posts in local storage
-        const posts = JSON.parse(localStorage.getItem('posts')) || [];
-        posts.push(post);
-        localStorage.setItem('posts', JSON.stringify(posts));
-
-        // Clear form and refresh display
-        document.getElementById('postForm').reset();
-        displayPosts();
-    };
-
-    reader.readAsDataURL(media);
+        reader.readAsDataURL(file); // Read each file
+    }
 });
 
 // Function to display all posts
@@ -34,10 +48,14 @@ function displayPosts() {
         const postDiv = document.createElement('div');
         postDiv.classList.add('post');
 
-        const mediaElement = document.createElement(post.media.startsWith('data:image') ? 'img' : 'video');
-        mediaElement.src = post.media;
-        mediaElement.controls = true; // Add controls for video
-        mediaElement.style.width = '100%'; // Adjust width
+        // Display each media item in the post
+        post.media.forEach(media => {
+            const mediaElement = document.createElement(media.startsWith('data:image') ? 'img' : 'video');
+            mediaElement.src = media;
+            mediaElement.controls = true; // Add controls for video
+            mediaElement.style.width = '100%'; // Adjust width
+            postDiv.appendChild(mediaElement);
+        });
 
         const contentParagraph = document.createElement('p');
         contentParagraph.textContent = post.content;
@@ -48,7 +66,6 @@ function displayPosts() {
             deletePost(index);
         };
 
-        postDiv.appendChild(mediaElement);
         postDiv.appendChild(contentParagraph);
         postDiv.appendChild(deleteButton);
         postsContainer.appendChild(postDiv);
@@ -65,3 +82,4 @@ function deletePost(index) {
 
 // Initial call to display posts on page load
 displayPosts();
+        
