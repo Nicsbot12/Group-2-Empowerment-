@@ -37,7 +37,7 @@ nav a:hover {
 
 main {
     padding: 20px;
-    max-width: 800px;
+    max-width: 400px; /* Adjusted for a more compact login form */
     margin: auto;
     background: #fff;
     border-radius: 8px;
@@ -94,22 +94,6 @@ form button:hover {
     transform: scale(1.05);
 }
 
-.post {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.5s forwards;
-    margin-bottom: 20px; /* Add some space between posts */
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.post:hover {
-    transform: translateY(-5px);
-}
-
 footer {
     text-align: center;
     padding: 20px 0;
@@ -148,4 +132,4 @@ footer {
         transform: translateY(0);
         opacity: 1;
     }
-    }
+}
