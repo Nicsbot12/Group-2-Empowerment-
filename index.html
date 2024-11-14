@@ -35,8 +35,8 @@
                 <source src="https://github.com/Nicsbot12/Group-2-Empowerment-/raw/refs/heads/main/lv_7429580269834734904_20241115072524.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            
-                    </div>
+        </div>
+
         <!-- Example image post -->
         <div class="post">
             <h3>Sample Image of Handsome</h3>
@@ -48,5 +48,23 @@
     <footer>
         <p>&copy; THIS WEBSITE IS FOR SCHOOL PROJECT ONLY</p>
     </footer>
+
+    <script>
+        // JavaScript to pause/play videos based on scroll position
+        const videos = document.querySelectorAll("video");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.play();
+                } else {
+                    entry.target.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        videos.forEach(video => observer.observe(video));
+    </script>
 </body>
 </html>
+    
