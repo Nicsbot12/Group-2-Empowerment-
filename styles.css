@@ -6,45 +6,16 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #4a148c, #8e24aa);
-    color: #fff; /* Changed to white for better visibility */
+    background-color: #f4f4f4;
+    color: #333;
     line-height: 1.6;
-    background-size: 200% 200%;
-    animation: gradientAnimation 15s ease infinite;
-    position: relative;
-}
-
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://www.transparenttextures.com/patterns/white-paper.png'); /* Subtle texture */
-    opacity: 0.1; /* Adjust opacity for subtlety */
-    z-index: 1;
 }
 
 header {
-    background: rgba(51, 51, 51, 0.8);
+    background: #333;
     color: #fff;
     padding: 20px 0;
     text-align: center;
-    position: relative;
-    z-index: 2; /* Ensure header is above the background */
     animation: slideDown 0.5s ease forwards;
 }
 
@@ -53,7 +24,7 @@ nav {
 }
 
 nav a {
-    color: #ffcc00; /* Changed link color for better visibility */
+    color: #fff;
     margin: 0 15px;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.2s ease;
@@ -68,16 +39,14 @@ main {
     padding: 20px;
     max-width: 400px; /* Adjusted for a more compact login form */
     margin: auto;
-    background: rgba(255, 255, 255, 0.9);
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 2; /* Ensure main content is above the background */
     animation: fadeIn 0.5s ease forwards;
 }
 
 h1, h2 {
-    color: #333; /* Keep headings dark for contrast */
+    color: #333;
 }
 
 h1 {
@@ -96,7 +65,6 @@ form {
 
 form label {
     margin: 10px 0 5px;
-    color: #333; /* Keep label color dark for contrast */
 }
 
 form input, form textarea {
@@ -138,12 +106,11 @@ img, video {
 footer {
     text-align: center;
     padding: 20px 0;
-    background: rgba(51, 51, 51, 0.8);
+    background: #333;
     color: #fff;
     position: relative;
     bottom: 0;
     width: 100%;
-    z-index: 2; /* Ensure footer is above the background */
     animation: slideUp 0.5s ease forwards;
 }
 
