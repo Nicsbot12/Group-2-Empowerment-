@@ -94,6 +94,15 @@ form button:hover {
     transform: scale(1.05);
 }
 
+.media-preview {
+    margin-top: 20px;
+}
+
+img, video {
+    max-width: 100%; /* Ensures media fits within the container */
+    height: auto; /* Maintains aspect ratio */
+}
+
 footer {
     text-align: center;
     padding: 20px 0;
@@ -132,4 +141,4 @@ footer {
         transform: translateY(0);
         opacity: 1;
     }
-}
+        }
