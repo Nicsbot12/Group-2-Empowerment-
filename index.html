@@ -22,7 +22,7 @@
         <div class="post">
             <h3>Wanted Gwapo</h3>
             <p>Ayon Sa Balita Itong Taong Nato Ay Ang Pinaka Ka Gwapo Ngayon.</p>
-            <video autoplay loop controls>
+            <video autoplay muted loop controls>
                 <source src="https://github.com/Nicsbot12/Group-2-Empowerment-/raw/refs/heads/main/lv_7302835452485045512_20241114201051.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -31,7 +31,7 @@
         <div class="post">
             <h3>Grabe Naman Si idol</h3>
             <p>Ayon Sa Balita Wanted po itong lalaking ito.</p>
-            <video autoplay loop controls>
+            <video autoplay muted loop controls>
                 <source src="https://github.com/Nicsbot12/Group-2-Empowerment-/raw/refs/heads/main/lv_7429580269834734904_20241115072524.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -50,7 +50,7 @@
     </footer>
 
     <script>
-        // JavaScript to pause/play videos based on scroll position and resume from last position
+        // JavaScript to pause/play videos based on scroll position, resume with sound when in view
         const videos = document.querySelectorAll("video");
 
         const observer = new IntersectionObserver((entries) => {
@@ -58,12 +58,14 @@
                 const video = entry.target;
 
                 if (entry.isIntersecting) {
-                    // Resume playing the video if not already playing
+                    // Unmute and play the video when in view
+                    video.muted = false;
                     if (video.paused) {
                         video.play();
                     }
                 } else {
-                    // Pause the video if it's out of view
+                    // Mute and pause the video when out of view
+                    video.muted = true;
                     video.pause();
                 }
             });
@@ -72,5 +74,5 @@
         videos.forEach(video => observer.observe(video));
     </script>
 </body>
-                </html>
+    </html>
     
