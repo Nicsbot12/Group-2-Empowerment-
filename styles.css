@@ -9,6 +9,9 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    min-height: 100vh; /* Ensures the body takes at least the full height of the viewport */
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -37,7 +40,7 @@ nav a:hover {
 
 main {
     padding: 20px;
-    max-width: 400px; /* Adjusted for a more compact login form */
+    max-width: 800px; /* Adjusted for larger screens */
     margin: auto;
     background: #fff;
     border-radius: 8px;
@@ -57,49 +60,41 @@ h2 {
     margin-top: 20px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+.post {
+    background: #ffffff; /* White background for posts */
+    padding: 15px; /* Padding inside the post */
+    margin-bottom: 20px; /* Space between posts */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for hover effects */
 }
 
-form label {
-    margin: 10px 0 5px;
+.post:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    transform: translateY(-5px); /* Slight lift effect */
 }
 
-form input, form textarea {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
+.post h3 {
+    color: #333; /* Color for post title */
+    margin-bottom: 10px; /* Space below the title */
 }
 
-form input:focus, form textarea:focus {
-    border-color: #333;
+.post p {
+    color: #666; /* Dark grey for post description */
+    margin-bottom: 15px; /* Space below the description */
 }
 
-form button {
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+/* Specific styles for video and image */
+.post video {
+    border-radius: 8px; /* Rounded corners for video */
+    max-width: 100%; /* Ensures video fits within the container */
+    height: auto; /* Maintains aspect ratio */
 }
 
-form button:hover {
-    background-color: #555;
-    transform: scale(1.05);
-}
-
-.media-preview {
-    margin-top: 20px;
-}
-
-img, video {
-    max-width: 100%; /* Ensures media fits within the container */
+.post img {
+    border-radius: 8px; /* Rounded corners for images */
+    max-width: 100%; /* Ensures image fits within the container */
     height: auto; /* Maintains aspect ratio */
 }
 
@@ -141,4 +136,4 @@ footer {
         transform: translateY(0);
         opacity: 1;
     }
-    }
+}
