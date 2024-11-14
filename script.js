@@ -2,26 +2,28 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
     const content = document.getElementById('content').value;
-    const media = document.getElementById('media').files[0];
+    const mediaFiles = document.getElementById('media').files; // Get all selected files
 
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const post = {
-            content: content,
-            media: e.target.result // Base64 encoded string
+    Array.from(mediaFiles).forEach(media => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const post = {
+                content: content,
+                media: e.target.result // Base64 encoded string
+            };
+
+            // Store posts in local storage
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+
+            // Clear form and refresh display
+            document.getElementById('postForm').reset();
+            displayPosts();
         };
 
-        // Store posts in local storage
-        const posts = JSON.parse(localStorage.getItem('posts')) || [];
-        posts.push(post);
-        localStorage.setItem('posts', JSON.stringify(posts));
-
-        // Clear form and refresh display
-        document.getElementById('postForm').reset();
-        displayPosts();
-    };
-
-    reader.readAsDataURL(media);
+        reader.readAsDataURL(media); // Read each file
+    });
 });
 
 // Function to display all posts
@@ -65,3 +67,4 @@ function deletePost(index) {
 
 // Initial call to display posts on page load
 displayPosts();
+            
