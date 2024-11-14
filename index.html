@@ -13,7 +13,6 @@
             <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact</a>
-            <a href="login.html">Login</a>
         </nav>
     </header>
     <main>
@@ -23,30 +22,5 @@
     <footer>
         <p>&copy; THIS WEBSITE IS FOR SCHOOL PROJECT ONLY</p>
     </footer>
-    <script>
-        // Load posts from local storage and display them
-        const postsContainer = document.getElementById('postsContainer');
-        const posts = JSON.parse(localStorage.getItem('posts')) || [];
-
-        posts.forEach(post => {
-            const postDiv = document.createElement('div');
-            postDiv.classList.add('post');
-
-            const titleElement = document.createElement('h3');
-            titleElement.textContent = post.title;
-
-            const contentElement = document.createElement('p');
-            contentElement.textContent = post.content;
-
-            const mediaElement = document.createElement(post.media.startsWith('data:image/') ? ' img' : 'video');
-            mediaElement.src = post.media;
-            mediaElement.controls = true;
-
-            postDiv.appendChild(titleElement);
-            postDiv.appendChild(contentElement);
-            postDiv.appendChild(mediaElement);
-            postsContainer.appendChild(postDiv);
-        });
-    </script>
 </body>
 </html>
